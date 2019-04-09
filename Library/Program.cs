@@ -6,7 +6,9 @@ namespace Library
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            UserMenu um = new UserMenu();
+            um.Options();
+
         }
     }
 }

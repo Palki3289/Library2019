@@ -12,19 +12,26 @@ namespace Library
         /// </summary>
         public string Title { get; set; }
        
-        /// <summary>
-        /// defines the pagecount of book
-        /// </summary>
-        public int PageCount { get; set; }
+        
        
         /// <summary>
-        /// whether book is checkedout or not
+        /// defines isbn of book
         /// </summary>
-        public bool Checkout { get; set; }
+        public int Isbn { get; set; }
+
+        /// <summary>
+        /// defines author of book
+        /// </summary>
+        public string Author { get; set; }
+
+        /// <summary>
+        /// defines price of book
+        /// </summary>
+        public decimal Price{ get; set; }
+
         #endregion
 
-        #region Methods
-
+        #region 
         #endregion
     }
 }
