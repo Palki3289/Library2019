@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Library
 {
-    class UserMenu
+    public class UserMenu
     {
         Library lib = new Library();
         public void Options()

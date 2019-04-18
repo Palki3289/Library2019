@@ -4,13 +4,13 @@ using System.Text;
 
 namespace Library
 {
-    class Library
+   public class Library
     {
-        Dictionary<string, int> LibraryDictionary = new Dictionary<string, int>();
+        private Dictionary<string, int> libraryDictionary = new Dictionary<string, int>();
         // create dictionary for bookname and username for issued book <string, string> calling it as issue dctionary
-        Dictionary<string, string> IssuedBooks = new Dictionary<string, string>();
+        private Dictionary<string, string> issuedBooks = new Dictionary<string, string>();
         // create dictionary for book name and  user name for hold book calling it as hold dictionary
-        Dictionary<string, string> HoldBooks = new Dictionary<string, string>();
+        private Dictionary<string, string> holdBooks = new Dictionary<string, string>();
 
 
         /// <summary>
@@ -30,66 +30,66 @@ namespace Library
 
         private void Initialize()
         {
-            LibraryDictionary.Add("Sita", 2);
-            LibraryDictionary.Add("Increase Productivity", 4);
-            LibraryDictionary.Add("C sharp", 5);
-            LibraryDictionary.Add("JavaBook", 1);// test with book
+            libraryDictionary.Add("Sita", 2);
+            libraryDictionary.Add("Increase Productivity", 4);
+            libraryDictionary.Add("C sharp", 5);
+            libraryDictionary.Add("JavaBook", 1);// test with book
         }
 
         public bool Issue(string bookName, string userName) // add username parameter
         {
-            if (LibraryDictionary.ContainsKey(bookName))
+            if (libraryDictionary.ContainsKey(bookName))
             {
-                if (LibraryDictionary[bookName] > 0)
+                if (libraryDictionary[bookName] > 0)
                 {
-                    LibraryDictionary[bookName] = LibraryDictionary[bookName] - 1;
+                    libraryDictionary[bookName] = libraryDictionary[bookName] - 1;
                     // add entry to dictionary issue dictioary
-                    IssuedBooks.Add(bookName, userName);
+                    issuedBooks.Add(bookName, userName);
                     return true;
                 }
                 else
                 // else block that means book count is 0
                 // add this bookname and user name mapping to hold dictionary
-                HoldBooks.Add(bookName, userName);
+                holdBooks.Add(bookName, userName);
             }
             return false;
         }
 
         public bool Return(string bookName, string userName) // add paramter username
         {
-            if (LibraryDictionary.ContainsKey(bookName))
+            if (libraryDictionary.ContainsKey(bookName))
             {
                 // remove user1 person entry from issue dictionary
-                IssuedBooks.Remove(bookName);
+                issuedBooks.Remove(bookName);
                 // check if hold dictionary contains entry for thod book (user2 is in hold dictionary)
-                if (HoldBooks.ContainsKey(bookName))
+                if (holdBooks.ContainsKey(bookName))
                 {
-                   string Holdperson = HoldBooks[bookName];
+                   string holdPerson = holdBooks[bookName];
                     // remove bookname/user2 entry from hold dictonary
-                    HoldBooks.Remove(bookName);
+                    holdBooks.Remove(bookName);
                     // add entry to issue dictionary
-                    IssuedBooks.Add(bookName, Holdperson);
+                    issuedBooks.Add(bookName, holdPerson);
                     return true;
                 }
 
                 else
                
-                LibraryDictionary[bookName] = LibraryDictionary[bookName] + 1; // do this only if there is no hold
+                libraryDictionary[bookName] = libraryDictionary[bookName] + 1; // do this only if there is no hold
                 return false;
 
             }
             else
             {
-                LibraryDictionary.Add(bookName, 1);
+                libraryDictionary.Add(bookName, 1);
                 return false;
             }
             
         }
         public void DisplayBooks()
         {
-            foreach (var bookName in LibraryDictionary.Keys)
+            foreach (var bookName in libraryDictionary.Keys)
             {
-                if(LibraryDictionary[bookName] > 0)
+                if(libraryDictionary[bookName] > 0)
                 Console.WriteLine(bookName);
             }
         }
@@ -98,9 +98,9 @@ namespace Library
         // issues dictionary
         public void TestIssuedBooks()
         {
-            foreach (var item in IssuedBooks.Keys)
+            foreach (var item in issuedBooks.Keys)
             {
-                Console.WriteLine(item + "and" + IssuedBooks[item]);
+                Console.WriteLine(item + "and" + issuedBooks[item]);
             }
         }
     }
